@@ -12,6 +12,8 @@ const li = galleryItems.map(({original, preview, description}) =>
 ).join('');
 ul.insertAdjacentHTML('beforeend', li);
 
+ul.addEventListener('click', openImg);
+
 const lightbox = new SimpleLightbox('.gallery a', { 
     captionDelay: 250,
     captionsData: 'alt'
