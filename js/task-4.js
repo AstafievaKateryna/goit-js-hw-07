@@ -1,17 +1,21 @@
-let counterValue = 0;
-const curentValue = document.querySelector('#value');
+const loginForm = document.querySelector('.login-form');
 
-const clickMinus = document.querySelector('button[data-action="decrement"]');
+loginForm.addEventListener('submit', chandleSubmit);
 
-const clickPlus = document.querySelector('button[data-action="increment"]');
+function chandleSubmit(event) {
+  event.preventDefault();
+  const form = event.target;
+  const email = form.elements.email.value.trim();
+  const password = form.elements.password.value.trim();
 
-clickMinus.addEventListener('click', pushMinus);
-function pushMinus(event){
-    counterValue -= 1;
-    curentValue.textContent = counterValue;
-};
-clickPlus.addEventListener('click', pushPlus);
-function pushPlus(event){
-    counterValue += 1;
-    curentValue.textContent = counterValue;
-};
+  if (email === '' || password === '') {
+    return alert('All form fields must be filled in');
+  }
+
+  const formObj = {
+    email: email,
+    password: password,
+  };
+  console.log(formObj);
+  form.reset();
+}
